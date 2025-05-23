@@ -13,21 +13,19 @@ Write a C program to convert a 23.65 into 25 using pointer
 #include <stdio.h>
 
 int main() {
-    double number = 23.65;
-    double *ptr = &number;
-    
-    *ptr = 25.0;
-    
-    printf("Modified value: %.2f\n", *ptr);
-    
+    double num = 23.65;         
+    double *ptr = &num;          
+    *ptr = 25.0;                
+
+    printf("Modified value: %.2f\n", num);   
+
     return 0;
 }
 ```
 
 ## OUTPUT:
-```
-Modified value: 25.00
-```
+
+![image](https://github.com/user-attachments/assets/9dcfe90b-a805-4ada-9e75-6b6867d8f8a6)
  	
 
 
@@ -81,9 +79,8 @@ int main() {
 }
 ```
 ## OUTPUT:
-```
-Product of first 12 natural numbers: 479001600
-```
+![image](https://github.com/user-attachments/assets/855907b4-90f1-42ba-af9c-e1a7854b32b9)
+
          		
 ## RESULT:
 
@@ -110,20 +107,28 @@ Write C Program to find Sum of each row of a Matrix
 #include <stdio.h>
 
 int main() {
-    int matrix[3][3] = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9}
-    };
+    int rows, cols, i, j, sum;
+    int matrix[10][10];
     
-    int rows = 3, cols = 3;
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
     
-    for (int i = 0; i < rows; i++) {
-        int sum = 0;
-        for (int j = 0; j < cols; j++) {
+    printf("Enter number of columns: ");
+    scanf("%d", &cols);
+    
+    printf("Enter elements of the matrix:\n");
+    for(i = 0; i < rows; i++) {
+        for(j = 0; j < cols; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    
+    for(i = 0; i < rows; i++) {
+        sum = 0;
+        for(j = 0; j < cols; j++) {
             sum += matrix[i][j];
         }
-        printf("Sum of row %d: %d\n", i + 1, sum);
+        printf("Sum of row %d = %d\n", i + 1, sum);
     }
     
     return 0;
@@ -132,17 +137,11 @@ int main() {
 
 
 ## OUTPUT
-```
-Sum of row 1: 6
-Sum of row 2: 15
-Sum of row 3: 24
-```
+![image](https://github.com/user-attachments/assets/c732e6b7-8d9b-4ca5-bc76-20e20800cbd4)
 
- 
- 
 
  ## RESULT
- 
+ Thus the program has been executed successfully.
 
 
 # EX-24-STRINGS
@@ -165,40 +164,34 @@ Write C program for the below pyramid string pattern. Enter a string: PROGRAM En
 #include <string.h>
 
 int main() {
-    char str[] = "PROGRAM";
-    int num_rows, len = strlen(str);
-    
+    char str[100];
+    int num_rows, i, j, k, midpoint;
+    printf("Enter a string: ");
+    scanf("%s", str);
     printf("Enter number of rows: ");
     scanf("%d", &num_rows);
-    
-    int midpoint = (2 * num_rows - 1) / 2;
-    
-    for (int i = 1; i <= num_rows; i++) {
-        int j;
-        for (j = 0; j < num_rows - i; j++) {
+
+    int len = strlen(str);
+    midpoint = (2 * num_rows - 1) / 2;  
+    for (i = 1; i <= num_rows; i++) {
+        for (j = 1; j <= num_rows - i; j++) {
             printf(" ");
         }
-        for (j = 0; j < (2 * i - 1); j++) {
-            printf("%c", str[j % len]);
+        for (k = 0; k < (2 * i - 1); k++) {
+            printf("%c", str[k % len]);
         }
+
         printf("\n");
     }
-    
+
     return 0;
 }
 ```
 
 
  ## OUTPUT
- ```
-Enter number of rows: 5
-    P
-   P R
-  P R O
- P R O G
-P R O G R
 
-```
+![image](https://github.com/user-attachments/assets/e7388308-d107-49a1-80c0-5a2b4886cdb0)
 
  
 
@@ -238,36 +231,32 @@ Step 6: End the program.
 int main() {
     int i, n;
     int arr[10];
-    int *parr = arr;
-    
-    printf("Enter the number of elements: ");
+    int *parr = arr; 
+    printf("Enter the number of elements (max 10): ");
     scanf("%d", &n);
-    
-    printf("Enter %d elements:\n", n);
-    for (i = 0; i < n; i++) {
-        scanf("%d", parr + i);
+
+    if (n > 10 || n < 1) {
+        printf("Invalid number of elements. Please enter between 1 and 10.\n");
+        return 1;
     }
-    
-    printf("The elements in the array are:\n");
+    printf("Enter %d integer elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", (parr + i));
+    }
+
+    printf("You entered:\n");
     for (i = 0; i < n; i++) {
         printf("%d ", *(parr + i));
     }
+
     printf("\n");
-    
     return 0;
 }
 ```
 
 ## OUTPUT
-```
-Enter the number of elements: 6
-Enter 6 elements:
-1 2 3 4 5 6
-The elements in the array are:
-1 2 3 4 5 6
-```
+![image](https://github.com/user-attachments/assets/e0fa93de-3994-42fa-b7e2-098250b66174)
 
- 
 
 ## RESULT
 
